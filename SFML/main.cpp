@@ -28,10 +28,11 @@ int main() {
 
 	/// 世界 ///
 
-	// define the level with an array of tile indices
+	// タイルインデックスの配列でレベルを定義する
 	std::ifstream file("mapa.txt");
 	int level[60*33];
 
+	//　.txtファイル内容を読み込んで、レベルを作る
 	for(int i = 0; i < 60 * 33; i++) {
 		std::string a;
 		file >> a;
@@ -47,7 +48,7 @@ int main() {
 	
 
 
-	///　スプライト　///
+	///　グラフィックス　///
 
 	//　キャラ
 	sf::Texture charText;
@@ -132,7 +133,7 @@ int main() {
 			map.move(sf::Vector2f(-SPEED, 0.0f));
 		}
 		
-		//std::cout << charSprite.getPosition().x << " " << charSprite.getPosition().y << std::endl;
+		/*std::cout << charSprite.getPosition().x << " " << charSprite.getPosition().y << std::endl;*/
 
 		if(charSprite.getPosition().x > WIDTH-20) {
 			charSprite.setPosition(sf::Vector2f(WIDTH-20, charSprite.getPosition().y));
@@ -144,7 +145,7 @@ int main() {
 		}
 
 
-		//sprite.setPosition(sf::Vector2f(-x, -y));
+		/*sprite.setPosition(sf::Vector2f(-x, -y));*/
 		window.setPosition(sf::Vector2i(x, y));
 
 		//	マップを描く
