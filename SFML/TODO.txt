@@ -1,0 +1,26 @@
+﻿PERSONAGEM
+
+arrumar movimentação do personagem
+colocar física - colisão
+
+
+
+MUNDO
+
+fazer o mundo parar de flicar quando vc mexe
+
+
+
+JOGO
+
+coletar moedas
+passar de fase
+fazer menu de jogo
+fazer inimigo(?)
+
+
+
+RECURSOS
+
+melhorar gráficos
+fazer musiquinha (jogo de rítmo?)
