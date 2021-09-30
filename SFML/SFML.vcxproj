@@ -149,18 +149,15 @@
     <ClCompile Include="class\TileMap.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Resources\kugimiya_rie.png">
-      <DeploymentContent>true</DeploymentContent>
-    </Image>
-    <Image Include="Resources\tileset.png" />
-    <Image Include="Resources\mapa.png" />
-    <Image Include="Resources\personagem.png" />
+    <Image Include="resources\image\tileset.png" />
+    <Image Include="resources\image\mapa.png" />
+    <Image Include="resources\image\personagem.png" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="class\TileMap.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\gta-sanders.ogg" />
+    <None Include="resources\sound\gta-sanders.ogg" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="mapa.txt" />

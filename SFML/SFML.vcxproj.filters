@@ -26,16 +26,13 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Resources\kugimiya_rie.png">
+    <Image Include="resources\image\mapa.png">
       <Filter>リソース ファイル</Filter>
     </Image>
-    <Image Include="Resources\mapa.png">
+    <Image Include="resources\image\tileset.png">
       <Filter>リソース ファイル</Filter>
     </Image>
-    <Image Include="Resources\tileset.png">
-      <Filter>リソース ファイル</Filter>
-    </Image>
-    <Image Include="Resources\personagem.png">
+    <Image Include="resources\image\personagem.png">
       <Filter>リソース ファイル</Filter>
     </Image>
   </ItemGroup>
@@ -45,7 +42,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\gta-sanders.ogg" />
+    <None Include="resources\sound\gta-sanders.ogg" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="mapa.txt" />

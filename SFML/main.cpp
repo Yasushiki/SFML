@@ -16,7 +16,7 @@ int main() {
 	/// ウィンドウ ///
 
 	//　メインウィンドウを作る
-	sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), L"僕のウィンドウ", sf::Style::None);
+	sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), L"ゲーム", sf::Style::None);
 	window.setFramerateLimit(30);
 
 	//　ウィンドウ動きのプロパティ
@@ -39,7 +39,7 @@ int main() {
 	}
 
 	TileMap map;
-	if(!map.load("Resources/tileset.png", sf::Vector2u(32, 32), level, 60, 33)) {
+	if(!map.load("resources/image/tileset.png", sf::Vector2u(32, 32), level, 60, 33)) {
 		return -1;
 	}
 
@@ -51,7 +51,7 @@ int main() {
 
 	//　キャラ
 	sf::Texture charText;
-	if(!charText.loadFromFile("Resources/personagem.png")) {
+	if(!charText.loadFromFile("resources/image/personagem.png")) {
 		return EXIT_FAILURE;
 	}	
 	sf::Sprite charSprite(charText);
@@ -63,7 +63,7 @@ int main() {
 
 	//　音楽をロードする
 	sf::Music music;
-	if(!music.openFromFile("Resources/gta-sanders.ogg")) {
+	if(!music.openFromFile("resources/sound/gta-sanders.ogg")) {
 		return EXIT_FAILURE;
 	}
 
@@ -132,7 +132,7 @@ int main() {
 			map.move(sf::Vector2f(-SPEED, 0.0f));
 		}
 		
-		std::cout << charSprite.getPosition().x << " " << charSprite.getPosition().y << std::endl;
+		//std::cout << charSprite.getPosition().x << " " << charSprite.getPosition().y << std::endl;
 
 		if(charSprite.getPosition().x > WIDTH-20) {
 			charSprite.setPosition(sf::Vector2f(WIDTH-20, charSprite.getPosition().y));
