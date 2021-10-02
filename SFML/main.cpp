@@ -51,12 +51,24 @@ int main() {
 	///　グラフィックス　///
 
 	//　キャラ
-	sf::Texture charText;
-	if(!charText.loadFromFile("resources/image/personagem.png")) {
+	//sf::Texture charText;
+	//if(!charText.loadFromFile("resources/image/personagem.png")) {
+	//	return EXIT_FAILURE;
+	//}
+	//sf::Sprite charSprite(charText);
+	//charSprite.setPosition(sf::Vector2f(230.0f, 230.0f));
+
+	sf::IntRect character(sf::Vector2i(30, 30), sf::Vector2i(20, 20));
+	
+	sf::Texture characterTexture;
+	if(!characterTexture.loadFromFile("resources/image/personagem.png")) {
 		return EXIT_FAILURE;
 	}
-	sf::Sprite charSprite(charText);
-	charSprite.setPosition(sf::Vector2f(230.0f, 230.0f));
+
+	//sf::Vector2i position(character.left, character.top);
+	
+	
+	sf::Sprite characterSprite(characterTexture, character);
 
 
 
@@ -112,46 +124,51 @@ int main() {
 			right = false;
 		}
 
+		std::cout << character.left << " " << character.top << std::endl;
+
 		if(up) {
 			y += -SPEED;
-			charSprite.move(0.0f, -SPEED / 2);
+			character.top -= SPEED / 2.5f;
 			map.move(sf::Vector2f(0.0f, SPEED));
 		}
 		if(left) {
 			x += -SPEED;
-			charSprite.move(-SPEED / 2, 0.0f);
+			character.left -= SPEED / 2.5f;
 			map.move(sf::Vector2f(SPEED, 0.0f));
 		}
 		if(down) {
 			y += SPEED;
-			charSprite.move(0.0f, SPEED / 2);
+			character.top += SPEED / 2.5f;
 			map.move(sf::Vector2f(0.0f, -SPEED));
 		}
 		if(right) {
 			x += SPEED;
-			charSprite.move(SPEED / 2, 0.0f);
+			character.left += SPEED / 2.5f;
 			map.move(sf::Vector2f(-SPEED, 0.0f));
 		}
 
 		/*std::cout << charSprite.getPosition().x << " " << charSprite.getPosition().y << std::endl;*/
 
-		if(charSprite.getPosition().x > WIDTH - 20) {
+		/*if(charSprite.getPosition().x > WIDTH - 20) {
 			charSprite.setPosition(sf::Vector2f(WIDTH - 20, charSprite.getPosition().y));
 		} else if(charSprite.getPosition().x < 0) {
 			charSprite.setPosition(sf::Vector2f(0, charSprite.getPosition().y));
 		}
 		if(charSprite.getPosition().y > HEIGHT - 20) {
 			charSprite.setPosition(sf::Vector2f(charSprite.getPosition().x, HEIGHT - 20));
-		}
+		}*/
 
-
+		characterSprite.setPosition(character.left, character.top);
 		/*sprite.setPosition(sf::Vector2f(-x, -y));*/
 		window.setPosition(sf::Vector2i(x, y));
 
 		//	マップを描く
 		window.clear();
 		window.draw(map);
-		window.draw(charSprite);
+		//window.draw(charSprite);
+
+		window.draw(characterSprite);
+		
 		window.display();
 
 	}
