@@ -46,5 +46,3 @@ bool TileMap::load(const std::string& tileset, sf::Vector2u tileSize, const int*
 	return true;
 	
 }
-
-

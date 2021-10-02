@@ -23,14 +23,14 @@ int main() {
 	int x = 0, y = 0;
 	bool up = false, down = false, left = false, right = false;
 	window.setPosition(sf::Vector2i(x, y));
-	
+
 
 
 	/// 世界 ///
 
 	// タイルインデックスの配列でレベルを定義する
 	std::ifstream file("mapa.txt");
-	int level[60*33];
+	int level[60 * 33];
 
 	//　.txtファイル内容を読み込んで、レベルを作る
 	for(int i = 0; i < 60 * 33; i++) {
@@ -45,7 +45,7 @@ int main() {
 	}
 
 	file.close();
-	
+
 
 
 	///　グラフィックス　///
@@ -54,7 +54,7 @@ int main() {
 	sf::Texture charText;
 	if(!charText.loadFromFile("resources/image/personagem.png")) {
 		return EXIT_FAILURE;
-	}	
+	}
 	sf::Sprite charSprite(charText);
 	charSprite.setPosition(sf::Vector2f(230.0f, 230.0f));
 
@@ -69,7 +69,7 @@ int main() {
 	}
 
 	/*music.play();*/
-	
+
 
 	//　ウィンドウループ
 	while(window.isOpen()) {
@@ -114,34 +114,34 @@ int main() {
 
 		if(up) {
 			y += -SPEED;
-			charSprite.move(0.0f, -SPEED/2);
+			charSprite.move(0.0f, -SPEED / 2);
 			map.move(sf::Vector2f(0.0f, SPEED));
 		}
 		if(left) {
 			x += -SPEED;
-			charSprite.move(-SPEED/2, 0.0f);
+			charSprite.move(-SPEED / 2, 0.0f);
 			map.move(sf::Vector2f(SPEED, 0.0f));
 		}
 		if(down) {
 			y += SPEED;
-			charSprite.move(0.0f, SPEED/2);
+			charSprite.move(0.0f, SPEED / 2);
 			map.move(sf::Vector2f(0.0f, -SPEED));
 		}
 		if(right) {
 			x += SPEED;
-			charSprite.move(SPEED/2, 0.0f);
+			charSprite.move(SPEED / 2, 0.0f);
 			map.move(sf::Vector2f(-SPEED, 0.0f));
 		}
-		
+
 		/*std::cout << charSprite.getPosition().x << " " << charSprite.getPosition().y << std::endl;*/
 
-		if(charSprite.getPosition().x > WIDTH-20) {
-			charSprite.setPosition(sf::Vector2f(WIDTH-20, charSprite.getPosition().y));
+		if(charSprite.getPosition().x > WIDTH - 20) {
+			charSprite.setPosition(sf::Vector2f(WIDTH - 20, charSprite.getPosition().y));
 		} else if(charSprite.getPosition().x < 0) {
 			charSprite.setPosition(sf::Vector2f(0, charSprite.getPosition().y));
 		}
-		if(charSprite.getPosition().y > HEIGHT-20) {
-			charSprite.setPosition(sf::Vector2f(charSprite.getPosition().x, HEIGHT-20));
+		if(charSprite.getPosition().y > HEIGHT - 20) {
+			charSprite.setPosition(sf::Vector2f(charSprite.getPosition().x, HEIGHT - 20));
 		}
 
 
