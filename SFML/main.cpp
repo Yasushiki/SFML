@@ -11,6 +11,28 @@ const int WIDTH = 480;
 const int HEIGHT = 480;
 const int SPEED = 15;
 
+std::vector<sf::IntRect> createBlocks(std::vector<sf::Vector2f> blocks, sf::Vector2u size) {
+
+	std::vector<sf::IntRect> blocksVector;
+
+	for(auto block : blocks) {
+		blocksVector.insert(blocksVector.end(), sf::IntRect(block.x, block.y, size.x, size.y));
+	}
+
+	return blocksVector;
+}
+
+//void colision(sf::IntRect character, std::vector<sf::IntRect> blocksVector) {
+//	
+//	for(const auto& i : blocksVector) {
+//		if(character.intersects(i)) {
+//			character.top -= 1.0f;
+//			std::cout << "colisão" << std::endl;
+//		}
+//	}
+//
+//}
+
 int main() {
 
 	/// ウィンドウ ///
@@ -47,6 +69,9 @@ int main() {
 
 	std::vector<sf::Vector2f> blocks = map.getBlocks();
 	sf::Vector2u size = map.getSize();
+
+	// create blocks
+	std::vector<sf::IntRect> blocksVector = createBlocks(blocks, size);
 
 
 	///　グラフィックス　///
@@ -120,32 +145,33 @@ int main() {
 
 		if(up) {
 			y += -SPEED;
-			character.top -= SPEED / 2.5f;
+			//character.top -= SPEED / 2.5f;
 			map.move(sf::Vector2f(0.0f, SPEED));
 		}
 		if(left) {
 			x += -SPEED;
-			character.left -= SPEED / 2.5f;
+			//character.left -= SPEED / 2.5f;
 			map.move(sf::Vector2f(SPEED, 0.0f));
 		}
 		if(down) {
 			y += SPEED;
-			character.top += SPEED / 2.5f;
+			//character.top += SPEED / 2.5f;
 			map.move(sf::Vector2f(0.0f, -SPEED));
 		}
 		if(right) {
 			x += SPEED;
-			character.left += SPEED / 2.5f;
+			//character.left += SPEED / 2.5f;
 			map.move(sf::Vector2f(-SPEED, 0.0f));
 		}
 
 		character.top += 1.0f;
 
-		for(auto i : blocks) {
-			if(character.contains(i.x, i.y)) {
+		for(const auto& i : blocksVector) {
+			while(character.intersects(i)) {
 				character.top -= 1.0f;
 			}
 		}
+
 
 		/*std::cout << charSprite.getPosition().x << " " << charSprite.getPosition().y << std::endl;*/
 
