@@ -40,33 +40,24 @@ int main() {
 	}
 
 	TileMap map;
+
 	if(!map.load("resources/image/tileset.png", sf::Vector2u(32, 32), level, 60, 33)) {
 		return -1;
 	}
 
 	file.close();
-
-
+	sf::Vector2u size = map.getSize();
+	std::cout << size.x << " " << size.y;
 
 	///　グラフィックス　///
 
-	//　キャラ
-	//sf::Texture charText;
-	//if(!charText.loadFromFile("resources/image/personagem.png")) {
-	//	return EXIT_FAILURE;
-	//}
-	//sf::Sprite charSprite(charText);
-	//charSprite.setPosition(sf::Vector2f(230.0f, 230.0f));
-
+	// キャラ
 	sf::IntRect character(sf::Vector2i(30, 30), sf::Vector2i(20, 20));
 	
 	sf::Texture characterTexture;
 	if(!characterTexture.loadFromFile("resources/image/personagem.png")) {
 		return EXIT_FAILURE;
 	}
-
-	//sf::Vector2i position(character.left, character.top);
-	
 	
 	sf::Sprite characterSprite(characterTexture, character);
 
@@ -124,7 +115,7 @@ int main() {
 			right = false;
 		}
 
-		std::cout << character.left << " " << character.top << std::endl;
+		//std::cout << character.left << " " << character.top << std::endl;
 
 		if(up) {
 			y += -SPEED;
@@ -147,6 +138,8 @@ int main() {
 			map.move(sf::Vector2f(-SPEED, 0.0f));
 		}
 
+		character.top += 1.0f;
+
 		/*std::cout << charSprite.getPosition().x << " " << charSprite.getPosition().y << std::endl;*/
 
 		/*if(charSprite.getPosition().x > WIDTH - 20) {
@@ -159,16 +152,12 @@ int main() {
 		}*/
 
 		characterSprite.setPosition(character.left, character.top);
-		/*sprite.setPosition(sf::Vector2f(-x, -y));*/
 		window.setPosition(sf::Vector2i(x, y));
 
 		//	マップを描く
 		window.clear();
 		window.draw(map);
-		//window.draw(charSprite);
-
 		window.draw(characterSprite);
-		
 		window.display();
 
 	}
