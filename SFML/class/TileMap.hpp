@@ -24,18 +24,22 @@ class TileMap : public sf::Drawable, public sf::Transformable {
             TileMap::size = tileSize;
         }
 
+        void setBlocks(sf::Vector2f position) {
+            blocks.insert(blocks.end(), position);
+        }
+
         sf::VertexArray m_vertices;
         sf::Texture m_tileset;
         sf::Vector2u size;
 
-        //std::vector<>
+        std::vector<sf::Vector2f> blocks;
 
 	public:
 	
 		bool load(const std::string& tileset, sf::Vector2u tileSize, const int* tiles, unsigned int width, unsigned int height);
 
-        sf::Vector2u getSize() { return size; }
+        // getters
+        sf::Vector2u getSize() const { return size; }
+        std::vector<sf::Vector2f> getBlocks() const { return blocks;  }
 	    
-
 };
-

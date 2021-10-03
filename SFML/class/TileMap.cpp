@@ -50,6 +50,10 @@ bool TileMap::load(const std::string& tileset, sf::Vector2u tileSize, const int*
 			quad[3].texCoords = sf::Vector2f(tu * tileSize.x, (tv + 1) * tileSize.y);
 
 
+			if(tileNumber == 1 || tileNumber == 3) {
+				TileMap::setBlocks(quad[0].position);
+			}
+
 		}
 
 	}

@@ -40,19 +40,20 @@ int main() {
 	}
 
 	TileMap map;
-
 	if(!map.load("resources/image/tileset.png", sf::Vector2u(32, 32), level, 60, 33)) {
 		return -1;
 	}
-
 	file.close();
+
+	std::vector<sf::Vector2f> blocks = map.getBlocks();
 	sf::Vector2u size = map.getSize();
-	std::cout << size.x << " " << size.y;
+
 
 	///　グラフィックス　///
 
 	// キャラ
-	sf::IntRect character(sf::Vector2i(30, 30), sf::Vector2i(20, 20));
+						 // origin              size
+	sf::IntRect character(sf::Vector2i(0, 0), sf::Vector2i(32, 32));
 	
 	sf::Texture characterTexture;
 	if(!characterTexture.loadFromFile("resources/image/personagem.png")) {
@@ -139,6 +140,12 @@ int main() {
 		}
 
 		character.top += 1.0f;
+
+		for(auto i : blocks) {
+			if(character.contains(i.x, i.y)) {
+				character.top -= 1.0f;
+			}
+		}
 
 		/*std::cout << charSprite.getPosition().x << " " << charSprite.getPosition().y << std::endl;*/
 
