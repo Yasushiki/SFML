@@ -1,15 +1,7 @@
 #include "TileMap.hpp"
 #include <iostream>
 
-/// <summary>
-/// Load the tilemap
-/// </summary>
-/// <param name="tileset">Tileset path</param>
-/// <param name="tileSize">Size of the tiles</param>
-/// <param name="tiles">Array of tiles</param>
-/// <param name="width">Width of the array</param>
-/// <param name="height">Height of the array</param>
-/// <returns></returns>
+
 bool TileMap::load(const std::string& tileset, sf::Vector2u tileSize, const int* tiles, unsigned int width, unsigned int height) {
 
 	//　タイルセットテクスチャをロードする

@@ -24,6 +24,9 @@
     <ClCompile Include="class\TileMap.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="class\Character.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\image\mapa.png">
@@ -38,6 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="class\TileMap.hpp">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="class\Character.hpp">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>

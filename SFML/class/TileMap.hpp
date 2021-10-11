@@ -7,6 +7,15 @@
 
 class TileMap : public sf::Drawable, public sf::Transformable {
 
+    public:
+
+        bool load(const std::string& tileset, sf::Vector2u tileSize, const int* tiles, unsigned int width, unsigned int height);
+
+
+        // getters
+        sf::Vector2u getSize() const { return size; }
+        std::vector<sf::Vector2f> getBlocks() const { return blocks; }
+
     private:
 
         virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const {
@@ -20,6 +29,8 @@ class TileMap : public sf::Drawable, public sf::Transformable {
             target.draw(m_vertices, states);
         }
 
+
+        // setters
         void setSize(sf::Vector2u tileSize) {
             TileMap::size = tileSize;
         }
@@ -33,13 +44,5 @@ class TileMap : public sf::Drawable, public sf::Transformable {
         sf::Vector2u size;
 
         std::vector<sf::Vector2f> blocks;
-
-	public:
-	
-		bool load(const std::string& tileset, sf::Vector2u tileSize, const int* tiles, unsigned int width, unsigned int height);
-
-        // getters
-        sf::Vector2u getSize() const { return size; }
-        std::vector<sf::Vector2f> getBlocks() const { return blocks;  }
 	    
 };

@@ -2,6 +2,8 @@
 
 arrumar movimentação do personagem
 colocar física - colisão
+colisão não está funcionando direito, mesmo com while ele fica caindo, fazer um sistema de movimentação único para o personagem, separar do sistema de movimentação da janela, ver bloco comentado que eu deixei
+ver porque textura não está funcionando
 
 
 

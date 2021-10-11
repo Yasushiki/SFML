@@ -145,6 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="class\Character.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="class\TileMap.cpp" />
   </ItemGroup>
@@ -154,6 +155,7 @@
     <Image Include="resources\image\personagem.png" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="class\Character.hpp" />
     <ClInclude Include="class\TileMap.hpp" />
   </ItemGroup>
   <ItemGroup>

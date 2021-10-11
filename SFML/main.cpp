@@ -6,6 +6,7 @@
 #include <SFML/Audio.hpp>
 
 #include "class/TileMap.hpp"
+#include "class/Character.hpp"
 
 const int WIDTH = 480;
 const int HEIGHT = 480;
@@ -22,16 +23,16 @@ std::vector<sf::IntRect> createBlocks(std::vector<sf::Vector2f> blocks, sf::Vect
 	return blocksVector;
 }
 
-//void colision(sf::IntRect character, std::vector<sf::IntRect> blocksVector) {
-//	
-//	for(const auto& i : blocksVector) {
-//		if(character.intersects(i)) {
-//			character.top -= 1.0f;
-//			std::cout << "colisão" << std::endl;
-//		}
-//	}
-//
-//}
+void colision(sf::IntRect &character, std::vector<sf::IntRect> blocksVector) {
+	
+	for(const auto& i : blocksVector) {
+		if(character.intersects(i)) {
+			character.top -= 1.0f;
+			std::cout << "colisão" << std::endl;
+		}
+	}
+
+}
 
 int main() {
 
@@ -78,26 +79,28 @@ int main() {
 
 	// キャラ
 						 // origin              size
-	sf::IntRect character(sf::Vector2i(0, 0), sf::Vector2i(32, 32));
+	/*sf::IntRect character(sf::Vector2i(0, 20), sf::Vector2i(32, 32));
 	
 	sf::Texture characterTexture;
 	if(!characterTexture.loadFromFile("resources/image/personagem.png")) {
 		return EXIT_FAILURE;
 	}
 	
-	sf::Sprite characterSprite(characterTexture, character);
+	sf::Sprite characterSprite(characterTexture, character);*/
+
+	Character personagem(sf::Vector2i(0, 0), sf::Vector2i(20, 20), "resources/image/personagem.png");
 
 
 
 	/// 音 ///
 
 	//　音楽をロードする
-	sf::Music music;
+	/*sf::Music music;
 	if(!music.openFromFile("resources/sound/gta-sanders.ogg")) {
 		return EXIT_FAILURE;
 	}
 
-	/*music.play();*/
+	music.play();*/
 
 
 	//　ウィンドウループ
@@ -114,6 +117,10 @@ int main() {
 			if(event.type == sf::Event::KeyPressed) {
 				if(event.key.code == sf::Keyboard::Escape) {
 					sf::sleep(sf::seconds(5));
+				}
+
+				if(event.key.code == sf::Keyboard::X) {
+					personagem.setPosition(sf::Vector2i(20, 20));
 				}
 			}
 		}
@@ -164,33 +171,45 @@ int main() {
 			map.move(sf::Vector2f(-SPEED, 0.0f));
 		}
 
-		character.top += 1.0f;
+		/*character.top += 1.0f;
+		//colision(character, blocksVector);
 
-		for(const auto& i : blocksVector) {
-			while(character.intersects(i)) {
-				character.top -= 1.0f;
-			}
-		}
+		//for(const auto& i : blocksVector) {
+
+		//	sf::IntRect collisionBlock;
+
+		//	bool checkCollision = character.intersects(i, collisionBlock);
+
+		//	if(checkCollision) {
+		//		character.top = (collisionBlock.top - character.height);
+		//	} else {
+		//		character.top += 1.0f;
+		//		break;
+		//	}
 
 
-		/*std::cout << charSprite.getPosition().x << " " << charSprite.getPosition().y << std::endl;*/
+		//}
 
-		/*if(charSprite.getPosition().x > WIDTH - 20) {
+
+		std::cout << charSprite.getPosition().x << " " << charSprite.getPosition().y << std::endl;
+
+		if(charSprite.getPosition().x > WIDTH - 20) {
 			charSprite.setPosition(sf::Vector2f(WIDTH - 20, charSprite.getPosition().y));
 		} else if(charSprite.getPosition().x < 0) {
 			charSprite.setPosition(sf::Vector2f(0, charSprite.getPosition().y));
 		}
 		if(charSprite.getPosition().y > HEIGHT - 20) {
 			charSprite.setPosition(sf::Vector2f(charSprite.getPosition().x, HEIGHT - 20));
-		}*/
+		}
 
-		characterSprite.setPosition(character.left, character.top);
+		//characterSprite.setPosition(character.left, character.top);*/
 		window.setPosition(sf::Vector2i(x, y));
 
 		//	マップを描く
 		window.clear();
 		window.draw(map);
-		window.draw(characterSprite);
+		//window.draw(characterSprite);
+		window.draw(personagem.sprite);
 		window.display();
 
 	}
