@@ -1,4 +1,4 @@
-#include "Character.hpp"
+﻿#include "Character.hpp"
 #include <iostream>
 
 Character::Character(sf::Vector2i position, sf::Vector2i size, std::string texturePath) {

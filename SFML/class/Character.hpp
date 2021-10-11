@@ -1,6 +1,6 @@
-#pragma once
+ï»¿#pragma once
 
-// ƒwƒbƒ_[
+// ãƒ˜ãƒƒãƒ€ãƒ¼
 #include <SFML/Graphics.hpp>
 #include <string.h>
 
@@ -8,12 +8,6 @@ class Character {
 
 	public:
 		
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="position"></param>
-		/// <param name="size"></param>
-		/// <param name="texturePath"></param>
 		Character(sf::Vector2i position, sf::Vector2i size, std::string texturePath);
 
 		// change the character position
