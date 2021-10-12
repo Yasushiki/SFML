@@ -23,16 +23,16 @@ std::vector<sf::IntRect> createBlocks(std::vector<sf::Vector2f> blocks, sf::Vect
 	return blocksVector;
 }
 
-void colision(sf::IntRect &character, std::vector<sf::IntRect> blocksVector) {
-	
-	for(const auto& i : blocksVector) {
-		if(character.intersects(i)) {
-			character.top -= 1.0f;
-			std::cout << "colisão" << std::endl;
-		}
-	}
-
-}
+//void colision(sf::IntRect &character, std::vector<sf::IntRect> blocksVector) {
+//	
+//	for(const auto& i : blocksVector) {
+//		if(character.intersects(i)) {
+//			character.top -= 1.0f;
+//			std::cout << "colisão" << std::endl;
+//		}
+//	}
+//
+//}
 
 int main() {
 
@@ -78,16 +78,6 @@ int main() {
 	///　グラフィックス　///
 
 	// キャラ
-						 // origin              size
-	/*sf::IntRect character(sf::Vector2i(0, 20), sf::Vector2i(32, 32));
-	
-	sf::Texture characterTexture;
-	if(!characterTexture.loadFromFile("resources/image/personagem.png")) {
-		return EXIT_FAILURE;
-	}
-	
-	sf::Sprite characterSprite(characterTexture, character);*/
-
 	Character personagem(sf::Vector2i(0, 0), sf::Vector2i(128, 128), "resources/image/personagem.png");
 
 
@@ -124,11 +114,11 @@ int main() {
 				}
 
 				if(event.key.code == sf::Keyboard::Right) {
-					personagem.move(2, 0);
+					personagem.move(SPEED / 2.5f, 0);
 				}
 
 				if(event.key.code == sf::Keyboard::Left) {
-					personagem.move(-2, 0);
+					personagem.move(-(SPEED / 2.5f), 0);
 				}
 			}
 		}
@@ -156,7 +146,7 @@ int main() {
 			right = false;
 		}
 
-		//std::cout << character.left << " " << character.top << std::endl;
+		std::cout << personagem.getCharacter().left << " " << personagem.getCharacter().top << std::endl;
 
 		if(up) {
 			y += -SPEED;
@@ -179,50 +169,42 @@ int main() {
 			map.move(sf::Vector2f(-SPEED, 0.0f));
 		}
 
+		// 重力
+		personagem.move(0, 1);
+
+		// window colision
 		if(personagem.getCharacter().left < 0) {
-			personagem.setPosition(personagem.x + 1, personagem.y);
+			personagem.setPosition(0, personagem.y);
+		} else if(personagem.getCharacter().left > WIDTH - personagem.width) {
+			personagem.setPosition(WIDTH - personagem.width, personagem.y);
+		}
+		if(personagem.getCharacter().top > HEIGHT - personagem.height) {
+			personagem.setPosition(personagem.x, HEIGHT - personagem.height);
 		}
 
-		/*character.top += 1.0f;
 		//colision(character, blocksVector);
-
+		//
 		//for(const auto& i : blocksVector) {
-
+		//
 		//	sf::IntRect collisionBlock;
-
+		//
 		//	bool checkCollision = character.intersects(i, collisionBlock);
-
+		//
 		//	if(checkCollision) {
 		//		character.top = (collisionBlock.top - character.height);
 		//	} else {
 		//		character.top += 1.0f;
 		//		break;
 		//	}
-
-
+		//
+		//
 		//}
 
-
-		std::cout << charSprite.getPosition().x << " " << charSprite.getPosition().y << std::endl;
-
-		if(charSprite.getPosition().x > WIDTH - 20) {
-			charSprite.setPosition(sf::Vector2f(WIDTH - 20, charSprite.getPosition().y));
-		} else if(charSprite.getPosition().x < 0) {
-			charSprite.setPosition(sf::Vector2f(0, charSprite.getPosition().y));
-		}
-		if(charSprite.getPosition().y > HEIGHT - 20) {
-			charSprite.setPosition(sf::Vector2f(charSprite.getPosition().x, HEIGHT - 20));
-		}
-
-		//characterSprite.setPosition(character.left, character.top);*/
 		window.setPosition(sf::Vector2i(x, y));
-
-		std::cout << personagem.getCharacter().left << " " << personagem.getCharacter().top << std::endl;
 
 		//	マップを描く
 		window.clear();
 		window.draw(map);
-		//window.draw(characterSprite);
 		window.draw(personagem.sprite);
 		window.display();
 

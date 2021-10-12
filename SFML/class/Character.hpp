@@ -20,8 +20,11 @@ class Character {
 
 		sf::Sprite sprite;
 
+		// character properties
 		int x;
 		int y;
+		int width;
+		int height;
 
 
 	private:
