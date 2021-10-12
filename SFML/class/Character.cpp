@@ -7,6 +7,10 @@ Character::Character(sf::Vector2i position, sf::Vector2i size, std::string textu
 	sf::IntRect character(position, size);
 	Character::setCharacterRectangle(character);
 
+	// character position
+	x = position.x;
+	y = position.y;
+
 	// load character texture
 	Character::loadTexture(texturePath);
 
@@ -16,9 +20,26 @@ Character::Character(sf::Vector2i position, sf::Vector2i size, std::string textu
 
 }
 
-void Character::setPosition(sf::Vector2i position) {
+void Character::setPosition(int x, int y) {
 	
-	character.left = position.x;
-	character.top = position.y;
+	this->x = x;
+	this->y = y;
+
+	character.left = x;
+	character.top = y;
+
+	sprite.setPosition(sf::Vector2f(x, y));
+
+}
+
+void Character::move(int offsetX, int offsetY) {
+
+	x = offsetX;
+	y = offsetY;
+
+	character.left += offsetX;
+	character.top += offsetY;
+
+	sprite.move(sf::Vector2f(offsetX, offsetY));
 
 }

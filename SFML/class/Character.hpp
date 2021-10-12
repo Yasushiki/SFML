@@ -11,14 +11,17 @@ class Character {
 		Character(sf::Vector2i position, sf::Vector2i size, std::string texturePath);
 
 		// change the character position
-		void setPosition(sf::Vector2i position);
-
+		void setPosition(int x, int y);
+		void move(int offsetX, int offsetY);
 
 		// getters
 		sf::IntRect getCharacter() const { return character; }
 
 
 		sf::Sprite sprite;
+
+		int x;
+		int y;
 
 
 	private:

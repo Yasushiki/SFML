@@ -120,7 +120,15 @@ int main() {
 				}
 
 				if(event.key.code == sf::Keyboard::X) {
-					personagem.setPosition(sf::Vector2i(20, 20));
+					personagem.setPosition(20, 20);
+				}
+
+				if(event.key.code == sf::Keyboard::Right) {
+					personagem.move(2, 0);
+				}
+
+				if(event.key.code == sf::Keyboard::Left) {
+					personagem.move(-2, 0);
 				}
 			}
 		}
@@ -171,6 +179,10 @@ int main() {
 			map.move(sf::Vector2f(-SPEED, 0.0f));
 		}
 
+		if(personagem.getCharacter().left < 0) {
+			personagem.setPosition(personagem.x + 1, personagem.y);
+		}
+
 		/*character.top += 1.0f;
 		//colision(character, blocksVector);
 
@@ -204,6 +216,8 @@ int main() {
 
 		//characterSprite.setPosition(character.left, character.top);*/
 		window.setPosition(sf::Vector2i(x, y));
+
+		std::cout << personagem.getCharacter().left << " " << personagem.getCharacter().top << std::endl;
 
 		//	マップを描く
 		window.clear();
