@@ -88,7 +88,7 @@ int main() {
 	
 	sf::Sprite characterSprite(characterTexture, character);*/
 
-	Character personagem(sf::Vector2i(0, 0), sf::Vector2i(20, 20), "resources/image/personagem.png");
+	Character personagem(sf::Vector2i(0, 0), sf::Vector2i(128, 128), "resources/image/personagem.png");
 
 
 

@@ -8,10 +8,7 @@ Character::Character(sf::Vector2i position, sf::Vector2i size, std::string textu
 	Character::setCharacterRectangle(character);
 
 	// load character texture
-	sf::Texture characterTexture;
-	if(!characterTexture.loadFromFile(texturePath)) {
-		Character::loadTextureFail();
-	}
+	Character::loadTexture(texturePath);
 
 	// create a sprite of the texture
 	sprite.setTexture(characterTexture);

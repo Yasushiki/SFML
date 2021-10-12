@@ -23,7 +23,11 @@ class Character {
 
 	private:
 		
-		bool loadTextureFail() { return EXIT_FAILURE; }
+		bool loadTexture(std::string texturePath) { 
+			if(!characterTexture.loadFromFile(texturePath)) {
+				return EXIT_FAILURE;
+			}
+		}
 
 		// setters
 		void setCharacterRectangle(sf::IntRect character) {
@@ -32,6 +36,7 @@ class Character {
 
 
 		sf::IntRect character;
+		sf::Texture characterTexture;
 
 };
 
